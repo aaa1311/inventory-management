@@ -1,0 +1,81 @@
+/* تحسين الخط */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    background-color: #f4f6f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* تحسين الـ Navbar */
+.navbar {
+    background: linear-gradient(45deg, #1d3557, #457b9d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f1faee !important;
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: #f1faee !important;
+    margin-right: 1rem;
+}
+
+.nav-link:hover {
+    color: #a8dadc !important;
+    text-decoration: underline;
+}
+
+/* تحسين الـ Card */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين الجدول */
+.table {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.table th, .table td {
+    text-align: center; /* النصوص في المنتصف أفقياً */
+    vertical-align: middle; /* النصوص في المنتصف عمودياً */
+}
+
+.table-dark {
+    background-color: #1d3557 !important;
+    color: #f1faee;
+}
+
+.table th {
+    font-weight: 600;
+    text-align: center; /* توسيط النصوص في رأس الجدول */
+}
+
+/* تحسين الأزرار */
+.btn-primary {
+    background-color: #1d3557;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #457b9d;
+}
+
+.btn-success {
+    background-color: #RRGGBB;
+}
+
+.btn-success:hover {
+    background-color: #21867a;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+}

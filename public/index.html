@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Start</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/inventory-management/public/الحنكليس-removebg-preview.ico">
+</head>
+<link rel="stylesheet" href="style.css">
+
+<Style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* صفحة البداية */
+.get-started {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.get-started .content {
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1s ease;
+}
+
+.get-started .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #4e54c8;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.get-started .btn:hover {
+    background-color: #eee;
+    transform: scale(1.1);
+}
+
+/* إخفاء الصفحة */
+.get-started.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* أنيميشن */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+</Style>
+<body>
+    <div id="getStartedPage" class="get-started" >
+    <div class="content">
+        <H1>Welcome Ya 2lb A5ok</H1>
+
+        <a id="startButton" class="btn btn-primary" href="Inventory.html">Start<a>
+    </div>
+</div>
+<script>
+    const baseUrl = 'http://localhost:3000';
+
+    function loadInventory() {
+        fetch(`${baseUrl}/inventory`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('data').innerHTML = `
+                    <h2>Inventory</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Item</th>
+                                <th>Quantity In</th>
+                                <th>Quantity Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(item => `
+                                <tr>
+                                    <td>${item.id}</td>
+                                    <td>${item.name}</td>
+                                    <td>${item.quantity_in}</td>
+                                    <td>${item.quantity_out}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            });
+    }
+
+    function loadRequests() {
+        fetch(`${baseUrl}/requests`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('data').innerHTML = `
+                    <h2>Requests</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Requester</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(request => `
+                                <tr>
+                                    <td>${request.id}</td>
+                                    <td>${request.request_date}</td>
+                                    <td>${request.requester_name}</td>
+                                    <td>${request.item_name}</td>
+                                    <td>${request.quantity_requested}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            });
+    }
+</script>
+</body>
+</html>
+
